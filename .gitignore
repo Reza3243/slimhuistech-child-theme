@@ -1,16 +1,23 @@
 # Ignore everything by default
 *
 
-# Allow git files
+# Keep git files
 !.gitignore
 
-# Allow our custom theme only
+# Allow wp-content structure
 !wp-content/
+wp-content/*
+
+# Allow themes folder
 !wp-content/themes/
+wp-content/themes/*
+
+# Allow ONLY your custom child theme
 !wp-content/themes/sht-child/
 !wp-content/themes/sht-child/**
 
-# Ignore uploads, plugins, cache
-wp-content/uploads/
-wp-content/plugins/
-wp-content/cache/
+# (Optional) ignore OS/editor junk
+.DS_Store
+Thumbs.db
+*.log
+
