@@ -1,0 +1,16 @@
+# Ignore everything by default
+*
+
+# Allow git files
+!.gitignore
+
+# Allow our custom theme only
+!wp-content/
+!wp-content/themes/
+!wp-content/themes/sht-child/
+!wp-content/themes/sht-child/**
+
+# Ignore uploads, plugins, cache
+wp-content/uploads/
+wp-content/plugins/
+wp-content/cache/
