@@ -38,3 +38,14 @@ add_action('init', function () {
         'label' => 'SHT Outline',
     ));
 });
+/**
+ * Enqueue custom styles for Gutenberg editor
+ */
+add_action('enqueue_block_editor_assets', function () {
+    wp_enqueue_style(
+        'sht-custom-editor',
+        get_stylesheet_directory_uri() . '/assets/css/sht-custom.css',
+        array(),
+        wp_get_theme()->get('Version')
+    );
+});
