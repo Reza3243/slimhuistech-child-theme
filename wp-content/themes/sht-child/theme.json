@@ -45,3 +45,18 @@
     }
   }
 }
+{
+  "styles": {
+    "blocks": {
+      "core/button": {
+        "supports": {
+          "color": {
+            "text": false,
+            "background": false
+          },
+          "border": false
+        }
+      }
+    }
+  }
+}
