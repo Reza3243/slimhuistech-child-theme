@@ -49,3 +49,12 @@ add_action('enqueue_block_editor_assets', function () {
         wp_get_theme()->get('Version')
     );
 });
+add_action('init', function () {
+
+  // Group: Card style
+  register_block_style('core/group', array(
+    'name'  => 'sht-card',
+    'label' => 'SHT Card',
+  ));
+
+});

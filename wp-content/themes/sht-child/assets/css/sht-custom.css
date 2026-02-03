@@ -26,3 +26,19 @@
   text-decoration: none;
   font-weight: 600;
 }
+/* 3) Group - SHT Card */
+.wp-block-group.is-style-sht-card {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  padding: 18px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* Optional: tighter spacing for inner blocks */
+.wp-block-group.is-style-sht-card > *:first-child {
+  margin-top: 0;
+}
+.wp-block-group.is-style-sht-card > *:last-child {
+  margin-bottom: 0;
+}
