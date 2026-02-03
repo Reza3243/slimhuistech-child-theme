@@ -1,0 +1,28 @@
+/* ========== Gutenberg Button Styles (SHT) ========== */
+
+/* 1) Primary button style */
+.wp-block-button.is-style-sht-primary .wp-block-button__link {
+  background: var(--wp--preset--color--primary);
+  color: #ffffff;
+  border: 2px solid var(--wp--preset--color--primary);
+  border-radius: 10px;
+  padding: 12px 18px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Hover */
+.wp-block-button.is-style-sht-primary .wp-block-button__link:hover {
+  filter: brightness(0.95);
+}
+
+/* 2) Outline button style */
+.wp-block-button.is-style-sht-outline .wp-block-button__link {
+  background: transparent;
+  color: var(--wp--preset--color--primary);
+  border: 2px solid var(--wp--preset--color--primary);
+  border-radius: 10px;
+  padding: 12px 18px;
+  text-decoration: none;
+  font-weight: 600;
+}
