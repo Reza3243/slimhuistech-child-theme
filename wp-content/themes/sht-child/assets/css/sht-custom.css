@@ -1,44 +1,144 @@
-/* ========== Gutenberg Button Styles (SHT) ========== */
+/* =========================================================
+   SlimHuisTech — Gutenberg Block Styles (SHT)
+   Components: Buttons + Cards
+   States: base / hover / focus-visible / active / disabled
+========================================================= */
 
-/* 1) Primary button style */
-.wp-block-button.is-style-sht-primary .wp-block-button__link {
-  background: var(--wp--preset--color--primary);
-  color: #ffffff;
-  border: 2px solid var(--wp--preset--color--primary);
-  border-radius: 10px;
-  padding: 12px 18px;
-  text-decoration: none;
-  font-weight: 600;
+/* -------------------------
+   Tokens (kept minimal)
+------------------------- */
+:root {
+  --sht-radius-btn: 10px;
+  --sht-radius-card: 14px;
+
+  /* Focus ring (neutral, works on light backgrounds) */
+  --sht-focus-outline: rgba(0, 0, 0, 0.25);
+  --sht-focus-gap: rgba(255, 255, 255, 0.75);
+  --sht-focus-outer: rgba(0, 0, 0, 0.15);
+
+  /* Shadows */
+  --sht-shadow-hover: 0 10px 22px rgba(0, 0, 0, 0.16);
+  --sht-shadow-card: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --sht-shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.10);
 }
 
-/* Hover */
-.wp-block-button.is-style-sht-primary .wp-block-button__link:hover {
-  filter: brightness(0.95);
-}
+/* =========================================================
+   Buttons (Gutenberg)
+========================================================= */
 
-/* 2) Outline button style */
+/* Shared button base */
+.wp-block-button.is-style-sht-primary .wp-block-button__link,
 .wp-block-button.is-style-sht-outline .wp-block-button__link {
-  background: transparent;
-  color: var(--wp--preset--color--primary);
-  border: 2px solid var(--wp--preset--color--primary);
-  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--sht-radius-btn);
   padding: 12px 18px;
+
   text-decoration: none;
   font-weight: 600;
+
+  border: 2px solid transparent;
+
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease, color 120ms ease, border-color 120ms ease;
 }
-/* 3) Group - SHT Card */
+
+/* Primary */
+.wp-block-button.is-style-sht-primary .wp-block-button__link {
+  background-color: var(--wp--preset--color--primary);
+  color: #ffffff;
+  border-color: var(--wp--preset--color--primary);
+}
+
+.wp-block-button.is-style-sht-primary .wp-block-button__link:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--sht-shadow-hover);
+  background-color: var(--wp--preset--color--primary);
+  color: #ffffff;
+}
+
+.wp-block-button.is-style-sht-primary .wp-block-button__link:focus-visible {
+  outline: 3px solid var(--sht-focus-outline);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--sht-focus-gap), 0 0 0 6px var(--sht-focus-outer);
+}
+
+.wp-block-button.is-style-sht-primary .wp-block-button__link:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Outline */
+.wp-block-button.is-style-sht-outline .wp-block-button__link {
+  background-color: transparent;
+  color: var(--wp--preset--color--primary);
+  border-color: var(--wp--preset--color--primary);
+}
+
+.wp-block-button.is-style-sht-outline .wp-block-button__link:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--sht-shadow-hover);
+
+  background-color: var(--wp--preset--color--primary);
+  color: #ffffff;
+  border-color: var(--wp--preset--color--primary);
+}
+
+.wp-block-button.is-style-sht-outline .wp-block-button__link:focus-visible {
+  outline: 3px solid var(--sht-focus-outline);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--sht-focus-gap), 0 0 0 6px var(--sht-focus-outer);
+}
+
+.wp-block-button.is-style-sht-outline .wp-block-button__link:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Disabled support (if used) */
+.wp-block-button .wp-block-button__link[aria-disabled="true"],
+.wp-block-button .wp-block-button__link:disabled {
+  opacity: 0.55;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-button.is-style-sht-primary .wp-block-button__link,
+  .wp-block-button.is-style-sht-outline .wp-block-button__link {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   Cards (Group block style)
+========================================================= */
+
 .wp-block-group.is-style-sht-card {
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--sht-radius-card);
   padding: 18px;
   background: #fff;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  box-shadow: var(--sht-shadow-card);
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+/* Card hover (subtle) */
+.wp-block-group.is-style-sht-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--sht-shadow-card-hover);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Card focus within (keyboard users) */
+.wp-block-group.is-style-sht-card:focus-within {
+  outline: 3px solid var(--sht-focus-outline);
+  outline-offset: 4px;
 }
 
 /* Optional: tighter spacing for inner blocks */
-.wp-block-group.is-style-sht-card > *:first-child {
-  margin-top: 0;
-}
-.wp-block-group.is-style-sht-card > *:last-child {
-  margin-bottom: 0;
-}
+.wp-block-group.is-style-sht-card > *:first-child { margin-top: 0; }
+.wp-block-group.is-style-sht-card > *:last-child { margin-bottom: 0; }
